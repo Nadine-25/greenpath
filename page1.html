@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenPath – Questionnaire</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="confetti-container" id="confetti"></div>
+
+    <!-- OVERLAY -->
+    <div id="thankyou-overlay">
+        <div class="thankyou-card-wrapper">
+            <div class="card thankyou-card">
+                <div class="check-ring">
+                    <svg viewBox="0 0 50 50">
+                        <polyline points="10,26 21,37 40,14" />
+                    </svg>
+                </div>
+                <h2 class="overlay-title">Reponses sauvegardees !</h2>
+                <p class="overlay-text">
+                    Tes reponses de cette page ont ete enregistrees.<br>
+                    Tu peux continuer ou t'arreter ici.
+                </p>
+                <div class="action-buttons">
+                    <a href="page2.html" class="action-btn btn-continue">
+                        <i class="fa-solid fa-arrow-right"></i> Continuer
+                    </a>
+                    <button class="action-btn btn-done" onclick="closeOverlay()">
+                        <i class="fa-solid fa-check"></i> Termine
+                    </button>
+                    <button class="action-btn btn-quit" onclick="quitApp()">
+                        <i class="fa-solid fa-right-from-bracket"></i> Quitter
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE -->
+    <div class="page-wrapper">
+        <div class="header">
+            <div class="logo-area">
+                <img id="mascot_sleeping" alt="mascot" src="mascot_sleeping.png">
+                <h1 class="app-title">GreenPath</h1>
+            </div>
+            <p class="app-subtitle"><i class="fa-solid fa-seedling"></i> Transforme tes etudes en aventure !</p>
+        </div>
+
+        <img id="piroutte" src="piroutte_transparent.gif" alt="mascot">
+
+        <div class="progress-container">
+            <div class="progress-label">
+                <span>Page 1 / 7</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" style="width:14%;"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-graduation-cap section-icon"></i>
+                <div class="section-number">1</div>
+                <h2 class="section-title">Profil de l'etudiant</h2>
+            </div>
+            <p class="section-desc">Dis-nous qui tu es pour personnaliser ton aventure !</p>
+
+            <!-- Q1 -->
+            <div class="question-group">
+                <label class="question-label">
+                    <span class="question-num">1</span>
+                    Quel est votre niveau d'etude ?
+                </label>
+                <div class="options-grid">
+                    <div class="option-item">
+                        <input type="radio" name="niveau" id="licence" value="Licence">
+                        <label class="option-label" for="licence">
+                            <i class="fa-solid fa-book option-icon"></i> Licence
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" name="niveau" id="master" value="Master">
+                        <label class="option-label" for="master">
+                            <i class="fa-solid fa-book-open option-icon"></i> Master
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" name="niveau" id="ingenieur" value="Ingenieur">
+                        <label class="option-label" for="ingenieur">
+                            <i class="fa-solid fa-gears option-icon"></i> Ingenieur
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" name="niveau" id="lyceen" value="Lyceen">
+                        <label class="option-label" for="lyceen">
+                            <i class="fa-solid fa-school option-icon"></i> Lyceen
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" name="niveau" id="niveau_autre_input" value="Autre"
+                            onchange="toggleConditional('niveau_autre', true)">
+                        <label class="option-label" for="niveau_autre_input">
+                            <i class="fa-solid fa-pen option-icon"></i> Autre
+                        </label>
+                    </div>
+                    <div id="niveau_autre" class="conditional-input">
+                        <input type="text" name="niveau_autre_text" class="styled-input"
+                            placeholder="Votre niveau actuel...">
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Q2 -->
+            <div class="question-group">
+                <label class="question-label">
+                    <span class="question-num">2</span>
+                    Comment evaluez-vous votre organisation actuelle ?
+                </label>
+                <div class="options-grid">
+                    <div class="option-item">
+                        <input type="radio" name="organisation" id="org1" value="Tres mauvaise">
+                        <label class="option-label" for="org1">
+                            <i class="fa-solid fa-face-tired option-icon"></i> Tres mauvaise
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" name="organisation" id="org2" value="Mauvaise">
+                        <label class="option-label" for="org2">
+                            <i class="fa-solid fa-face-frown option-icon"></i> Mauvaise
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" name="organisation" id="org3" value="Moyenne">
+                        <label class="option-label" for="org3">
+                            <i class="fa-solid fa-face-meh option-icon"></i> Moyenne
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" name="organisation" id="org4" value="Bonne">
+                        <label class="option-label" for="org4">
+                            <i class="fa-solid fa-face-smile option-icon"></i> Bonne
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" name="organisation" id="org5" value="Excellente">
+                        <label class="option-label" for="org5">
+                            <i class="fa-solid fa-face-grin-stars option-icon"></i> Excellente
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Q3 -->
+            <div class="question-group">
+                <label class="question-label">
+                    <span class="question-num">3</span>
+                    Utilisez-vous deja une application pour organiser vos etudes ?
+                </label>
+                <div class="options-grid">
+                    <div class="option-item">
+                        <input type="radio" name="app_existante" id="app_oui" value="Oui"
+                            onchange="toggleConditional('app_name', true)">
+                        <label class="option-label" for="app_oui">
+                            <i class="fa-solid fa-circle-check option-icon"></i> Oui
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" name="app_existante" id="app_non" value="Non"
+                            onchange="toggleConditional('app_name', false)">
+                        <label class="option-label" for="app_non">
+                            <i class="fa-solid fa-circle-xmark option-icon"></i> Non
+                        </label>
+                    </div>
+                </div>
+                <div id="app_name" class="conditional-input">
+                    <input type="text" name="app_name" class="styled-input"
+                        placeholder="Laquelle utilisez-vous ? (Notion, Todoist...)">
+                </div>
+            </div>
+
+            <div class="nav-buttons-triple">
+                <span style="opacity:0.5;font-size:0.85rem;font-weight:700;color:var(--brown);">
+                    <i class="fa-solid fa-seedling"></i> Debut
+                </span>
+                <button class="btn-validate" id="validateBtn" onclick="validateForm(event)">
+                    <i class="fa-solid fa-check"></i> Valider
+                </button>
+                <a href="page2.html" class="btn btn-primary" onclick="saveAndNext(event,'page2.html')">
+                    Suivant <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="page-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <script src="shared.js"></script>
+    <script>
+        // Gestion radio "niveau" pour cacher "autre" si on change
+        document.querySelectorAll('input[name="niveau"]').forEach(function (r) {
+            r.addEventListener('change', function () {
+                if (this.id !== 'niveau_autre_input') toggleConditional('niveau_autre', false);
+                else toggleConditional('niveau_autre', true);
+            });
+        });
+        document.querySelectorAll('input[name="app_existante"]').forEach(function (r) {
+            r.addEventListener('change', function () {
+                toggleConditional('app_name', this.id === 'app_oui');
+            });
+        });
+    </script>
+</body>
+
+</html>

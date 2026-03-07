@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenPath – Questionnaire</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="confetti-container" id="confetti"></div>
+
+    <!-- OVERLAY -->
+    <div id="thankyou-overlay">
+        <div class="thankyou-card-wrapper">
+            <div class="card thankyou-card">
+                <div class="check-ring">
+                    <svg viewBox="0 0 50 50">
+                        <polyline points="10,26 21,37 40,14" />
+                    </svg>
+                </div>
+                <h2 class="overlay-title">Reponses sauvegardees !</h2>
+                <p class="overlay-text">
+                    Tes obstacles ont bien ete notes.<br>
+                    Tu peux continuer ou t'arreter ici.
+                </p>
+                <div class="action-buttons">
+                    <a href="page7.html" class="action-btn btn-continue">
+                        <i class="fa-solid fa-arrow-right"></i> Continuer
+                    </a>
+                    <button class="action-btn btn-done" onclick="closeOverlay()">
+                        <i class="fa-solid fa-check"></i> Termine
+                    </button>
+                    <button class="action-btn btn-quit" onclick="quitApp()">
+                        <i class="fa-solid fa-right-from-bracket"></i> Quitter
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE -->
+    <div class="page-wrapper">
+        <div class="header">
+            <div class="logo-area">
+                <img id="mascot_sleeping" alt="mascot" src="mascot_sleeping.png">
+                <h1 class="app-title">GreenPath</h1>
+            </div>
+            <p class="app-subtitle"><i class="fa-solid fa-road-barrier"></i> Obstacles et problemes reels</p>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-label">
+                <span>Page 6 / 7</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" style="width:84%;"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-triangle-exclamation section-icon"></i>
+                <div class="section-number">6</div>
+                <h2 class="section-title">Obstacles et difficultes</h2>
+            </div>
+            <p class="section-desc">Aide-nous a resoudre tes vrais problemes d'etudiant !</p>
+
+            <!-- Q13 -->
+            <div class="question-group">
+                <label class="question-label">
+                    <span class="question-num">13</span>
+                    Quelle est votre plus grande difficulte ?
+                    <small style="font-weight:600;color:var(--brown-light)">(plusieurs choix)</small>
+                </label>
+                <div class="options-grid">
+                    <div class="option-item">
+                        <input type="checkbox" name="difficulte" id="d_procras" value="Procrastination">
+                        <label class="option-label" for="d_procras">
+                            <i class="fa-solid fa-bed option-icon"></i> Procrastination
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="checkbox" name="difficulte" id="d_orga" value="Manque d'organisation">
+                        <label class="option-label" for="d_orga">
+                            <i class="fa-solid fa-list-check option-icon"></i> Manque d'organisation
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="checkbox" name="difficulte" id="d_stress" value="Stress">
+                        <label class="option-label" for="d_stress">
+                            <i class="fa-solid fa-face-tired option-icon"></i> Stress
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="checkbox" name="difficulte" id="d_motiv" value="Manque de motivation">
+                        <label class="option-label" for="d_motiv">
+                            <i class="fa-solid fa-battery-quarter option-icon"></i> Manque de motivation
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="checkbox" name="difficulte" id="d_temps" value="Gestion du temps">
+                        <label class="option-label" for="d_temps">
+                            <i class="fa-solid fa-clock option-icon"></i> Gestion du temps
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="checkbox" id="d_autre" onclick="toggleField('difficulte_autre_input', this)">
+                        <label class="option-label" for="d_autre">
+                            <i class="fa-solid fa-pen option-icon"></i> Autre
+                        </label>
+                    </div>
+                    <div id="difficulte_autre_input" class="conditional-input">
+                        <input type="text" name="difficulte_autre" class="styled-input"
+                            placeholder="Precisez votre difficulte...">
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Q14 -->
+            <div class="question-group">
+                <label class="question-label">
+                    <span class="question-num">14</span>
+                    Qu'est-ce qui vous empeche d'utiliser une app de suivi ?
+                    <small style="font-weight:600;color:var(--brown-light)">(plusieurs choix)</small>
+                </label>
+                <div class="options-grid">
+                    <div class="option-item">
+                        <input type="checkbox" name="frein" id="f_oubli" value="Oubli">
+                        <label class="option-label" for="f_oubli">
+                            <i class="fa-solid fa-ghost option-icon"></i> J'oublie de l'utiliser
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="checkbox" name="frein" id="f_compli" value="Interface compliquee">
+                        <label class="option-label" for="f_compli">
+                            <i class="fa-solid fa-face-dizzy option-icon"></i> Interface trop compliquee
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="checkbox" name="frein" id="f_interet" value="Manque d'interet">
+                        <label class="option-label" for="f_interet">
+                            <i class="fa-solid fa-face-rolling-eyes option-icon"></i> Manque d'interet
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="checkbox" name="frein" id="f_notif" value="Trop de notifications">
+                        <label class="option-label" for="f_notif">
+                            <i class="fa-solid fa-bell option-icon"></i> Trop de notifications
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="checkbox" name="frein" id="f_recompense" value="Aucune recompense">
+                        <label class="option-label" for="f_recompense">
+                            <i class="fa-solid fa-gift option-icon"></i> Aucune recompense
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="checkbox" id="f_autre" onclick="toggleField('frein_autre_input', this)">
+                        <label class="option-label" for="f_autre">
+                            <i class="fa-solid fa-pen option-icon"></i> Autre
+                        </label>
+                    </div>
+                    <div id="frein_autre_input" class="conditional-input">
+                        <input type="text" name="frein_autre" class="styled-input"
+                            placeholder="Precisez votre reponse...">
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons-triple">
+                <a href="page5.html" class="btn btn-secondary">
+                    <i class="fa-solid fa-arrow-left"></i> Retour
+                </a>
+                <button class="btn-validate" id="validateBtn" onclick="validateForm(event)">
+                    <i class="fa-solid fa-check"></i> Valider
+                </button>
+                <a href="page7.html" class="btn btn-primary" onclick="saveAndNext(event,'page7.html')">
+                    Suivant <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="page-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <script src="shared.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenPath – Questionnaire</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="confetti-container" id="confetti"></div>
+
+    <!-- OVERLAY -->
+    <div id="thankyou-overlay">
+        <div class="thankyou-card-wrapper">
+            <div class="card thankyou-card">
+                <div class="check-ring">
+                    <svg viewBox="0 0 50 50">
+                        <polyline points="10,26 21,37 40,14" />
+                    </svg>
+                </div>
+                <h2 class="overlay-title">Reponses sauvegardees !</h2>
+                <p class="overlay-text">
+                    Tes reponses ont bien ete enregistrees.<br>
+                    Tu peux continuer ou t'arreter ici.
+                </p>
+                <div class="action-buttons">
+                    <a href="page3.html" class="action-btn btn-continue">
+                        <i class="fa-solid fa-arrow-right"></i> Continuer
+                    </a>
+                    <button class="action-btn btn-done" onclick="closeOverlay()">
+                        <i class="fa-solid fa-check"></i> Termine
+                    </button>
+                    <button class="action-btn btn-quit" onclick="quitApp()">
+                        <i class="fa-solid fa-right-from-bracket"></i> Quitter
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE -->
+    <div class="page-wrapper">
+        <div class="header">
+            <div class="logo-area">
+                <img id="mascot_sleeping" alt="mascot" src="mascot_sleeping.png">
+                <h1 class="app-title">GreenPath</h1>
+            </div>
+            <p class="app-subtitle"><i class="fa-solid fa-gamepad"></i> Systeme de missions RPG</p>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-label">
+                <span>Page 2 / 7</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" style="width:28%;"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-gamepad section-icon"></i>
+                <div class="section-number">2</div>
+                <h2 class="section-title">Interet pour la gamification</h2>
+            </div>
+            <p class="section-desc">Valide le concept RPG – dis-nous ce qui t'attire !</p>
+
+            <!-- Q4 -->
+            <div class="question-group">
+                <label class="question-label">
+                    <span class="question-num">4</span>
+                    Quelle est votre experience en jeux videos ?
+                </label>
+                <div class="options-grid">
+                    <div class="option-item">
+                        <input type="radio" name="interet_rpg" id="rpg_aucun" value="Aucune experience">
+                        <label class="option-label" for="rpg_aucun">
+                            <i class="fa-solid fa-ban option-icon"></i> Aucune experience
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" name="interet_rpg" id="rpg_casual" value="Casual jeux mobiles">
+                        <label class="option-label" for="rpg_casual">
+                            <i class="fa-solid fa-mobile-screen option-icon"></i> Casual (jeux mobiles)
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" name="interet_rpg" id="rpg_hardcore" value="Hardcore jeux PC">
+                        <label class="option-label" for="rpg_hardcore">
+                            <i class="fa-solid fa-computer option-icon"></i> Hardcore (jeux sur PC)
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Q5 -->
+            <div class="question-group">
+                <label class="question-label">
+                    <span class="question-num">5</span>
+                    Aimeriez-vous transformer votre vie etudiante en mission de jeu video RPG ?
+                </label>
+                <div class="options-grid">
+                    <div class="option-item">
+                        <input type="radio" name="rpg_mission" id="rpg_oui" value="Oui">
+                        <label class="option-label" for="rpg_oui">
+                            <i class="fa-solid fa-circle-check option-icon"></i> Oui
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" name="rpg_mission" id="rpg_non" value="Non">
+                        <label class="option-label" for="rpg_non">
+                            <i class="fa-solid fa-circle-xmark option-icon"></i> Non
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons-triple">
+                <a href="page1.html" class="btn btn-secondary">
+                    <i class="fa-solid fa-arrow-left"></i> Retour
+                </a>
+                <button class="btn-validate" id="validateBtn" onclick="validateForm(event)">
+                    <i class="fa-solid fa-check"></i> Valider
+                </button>
+                <a href="page3.html" class="btn btn-primary" onclick="saveAndNext(event,'page3.html')">
+                    Suivant <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="page-dots">
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <script src="shared.js"></script>
+</body>
+
+</html>

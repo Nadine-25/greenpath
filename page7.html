@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenPath – Questionnaire</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* Overlay final special */
+        .final-overlay-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2rem;
+            color: var(--brown-dark);
+            margin-bottom: 10px;
+            animation: slideUp 0.5s ease 0.4s both;
+        }
+
+        .final-overlay-text {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--brown);
+            line-height: 1.7;
+            margin-bottom: 16px;
+            animation: slideUp 0.5s ease 0.55s both;
+        }
+
+        .xp-final {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--coin-yellow), #e8a020);
+            color: var(--brown-dark);
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: 3px solid var(--brown-dark);
+            box-shadow: 3px 3px 0 var(--brown-dark);
+            margin-bottom: 22px;
+            animation: slideUp 0.5s ease 0.7s both, bounce 1s ease-in-out 1.2s infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="confetti-container" id="confetti"></div>
+
+    <!-- OVERLAY FINAL -->
+    <div id="thankyou-overlay">
+        <div class="thankyou-card-wrapper">
+            <div class="card thankyou-card">
+                <div class="check-ring">
+                    <svg viewBox="0 0 50 50">
+                        <polyline points="10,26 21,37 40,14" />
+                    </svg>
+                </div>
+                <h2 class="final-overlay-title">Merci beaucoup !</h2>
+                <p class="final-overlay-text">
+                    Tu viens d'aider a construire <strong>GreenPath</strong> !<br>
+                    Tes reponses sont precieuses pour nous.<br>
+                    Ensemble on va rendre les etudes<br>
+                    moins stressantes et plus fun !
+                </p>
+                <div class="action-buttons">
+                    <a href="page1.html" class="action-btn btn-continue"
+                        onclick="localStorage.removeItem('gp_responses'); localStorage.removeItem('gp_coins');">
+                        <i class="fa-solid fa-rotate-left"></i> Recommencer
+                    </a>
+                    <button class="action-btn btn-done" onclick="closeOverlay()">
+                        <i class="fa-solid fa-check"></i> C'est termine
+                    </button>
+                    <button class="action-btn btn-quit" onclick="quitApp()">
+                        <i class="fa-solid fa-right-from-bracket"></i> Quitter
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE -->
+    <div class="page-wrapper">
+        <div class="header">
+            <div class="logo-area">
+                <img id="mascot_sleeping" alt="mascot" src="mascot_sleeping.png">
+                <h1 class="app-title">GreenPath</h1>
+            </div>
+            <p class="app-subtitle"><i class="fa-solid fa-star"></i> Questions finales et ta vision</p>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-label">
+                <span>Page 7 / 7</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" style="width:95%;"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-star section-icon"></i>
+                <div class="section-number">7</div>
+                <h2 class="section-title">Ta vision de GreenPath</h2>
+            </div>
+            <p class="section-desc">Les questions les plus importantes – sois libre !</p>
+
+            <div class="divider"></div>
+
+            <!-- Q15 -->
+            <div class="question-group">
+                <label class="question-label" for="app_parfaite">
+                    <span class="question-num">15</span>
+                    Decrivez votre application etudiante parfaite en quelques mots.
+                </label>
+                <textarea id="app_parfaite" name="app_parfaite" class="styled-input styled-textarea" rows="3"
+                    placeholder="Ex: simple, motivante, belle, efficace, fun..."></textarea>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Q16 -->
+            <div class="question-group">
+                <label class="question-label" for="email_contact">
+                    <span class="question-num">16</span>
+                    Souhaitez-vous etre informe(e) du lancement de GreenPath ? (optionnel)
+                </label>
+                <input type="email" id="email_contact" name="email" class="styled-input" placeholder="votre@email.com">
+                <p class="input-hint">
+                    <i class="fa-solid fa-lock"></i>
+                    Email utilise uniquement pour vous notifier du lancement – jamais de spam !
+                </p>
+            </div>
+
+            <div class="nav-buttons">
+                <a href="page6.html" class="btn btn-secondary">
+                    <i class="fa-solid fa-arrow-left"></i> Retour
+                </a>
+                <button class="btn-validate" id="validateBtn" onclick="submitFinal(event)">
+                    <i class="fa-solid fa-paper-plane"></i> Valider et Terminer
+                </button>
+            </div>
+        </div>
+
+        <div class="page-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot active"></div>
+        </div>
+    </div>
+
+    <script src="shared.js"></script>
+    <script>
+        // Submit final — collecte tout + envoie + overlay final
+        function submitFinal(e) {
+            const btn = document.getElementById('validateBtn');
+            addRipple(btn, e);
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Envoi...';
+
+            var data = collecterReponses();
+
+            fetch(SHEET_URL, { method: 'POST', body: JSON.stringify(data) })
+                .then(function () {
+                    btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Reponses envoyees !';
+                    let coins = parseInt(localStorage.getItem('gp_coins') || '0') + 400;
+                    localStorage.setItem('gp_coins', coins);
+                    document.getElementById('coins').textContent = coins;
+                    launchConfetti();
+                    setTimeout(function () {
+                        document.getElementById('thankyou-overlay').classList.add('show');
+                    }, 700);
+                })
+                .catch(function () {
+                    btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Reessayer';
+                    btn.disabled = false;
+                });
+        }
+    </script>
+</body>
+
+</html>

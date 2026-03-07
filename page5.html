@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenPath – Questionnaire</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="confetti-container" id="confetti"></div>
+
+    <!-- OVERLAY -->
+    <div id="thankyou-overlay">
+        <div class="thankyou-card-wrapper">
+            <div class="card thankyou-card">
+                <div class="check-ring">
+                    <svg viewBox="0 0 50 50">
+                        <polyline points="10,26 21,37 40,14" />
+                    </svg>
+                </div>
+                <h2 class="overlay-title">Reponses sauvegardees !</h2>
+                <p class="overlay-text">
+                    Tes preferences de design ont ete notees.<br>
+                    Tu peux continuer ou t'arreter ici.
+                </p>
+                <div class="xp-earned"><i class="fa-solid fa-star"></i> +50 XP gagnes !</div>
+                <div class="action-buttons">
+                    <a href="page6.html" class="action-btn btn-continue">
+                        <i class="fa-solid fa-arrow-right"></i> Continuer
+                    </a>
+                    <button class="action-btn btn-done" onclick="closeOverlay()">
+                        <i class="fa-solid fa-check"></i> Termine
+                    </button>
+                    <button class="action-btn btn-quit" onclick="quitApp()">
+                        <i class="fa-solid fa-right-from-bracket"></i> Quitter
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE -->
+    <div class="page-wrapper">
+        <div class="header">
+            <div class="logo-area">
+                <img id="mascot_sleeping" alt="mascot" src="mascot_sleeping.png">
+                <h1 class="app-title">GreenPath</h1>
+            </div>
+            <p class="app-subtitle"><i class="fa-solid fa-palette"></i> Design et interface</p>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-label">
+                <span>Page 5 / 7</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" style="width:70%;"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-paintbrush section-icon"></i>
+                <div class="section-number">5</div>
+                <h2 class="section-title">Design et style d'interface</h2>
+            </div>
+            <p class="section-desc">Aide-nous a creer l'UX parfaite pour toi !</p>
+
+            <!-- Q10 -->
+            <div class="question-group">
+                <label class="question-label">
+                    <span class="question-num">10</span>
+                    Quel style preferez-vous ?
+                    <small style="font-weight:600;color:var(--brown-light)">(plusieurs choix possibles)</small>
+                </label>
+                <div class="options-grid two-col">
+                    <div class="option-item">
+                        <input type="checkbox" name="style_ui" id="st_mini" value="Minimaliste">
+                        <label class="option-label" for="st_mini">
+                            <i class="fa-solid fa-square option-icon"></i> Minimaliste
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="checkbox" name="style_ui" id="st_nature" value="Nature Vert">
+                        <label class="option-label" for="st_nature">
+                            <i class="fa-solid fa-leaf option-icon"></i> Nature / Vert
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="checkbox" name="style_ui" id="st_rpg" value="RPG Fantaisie">
+                        <label class="option-label" for="st_rpg">
+                            <i class="fa-solid fa-dragon option-icon"></i> RPG Fantaisie
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="checkbox" name="style_ui" id="st_modern" value="Moderne academique">
+                        <label class="option-label" for="st_modern">
+                            <i class="fa-solid fa-building-columns option-icon"></i> Moderne academique
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="checkbox" name="style_ui" id="st_cartoon" value="Cartoon">
+                        <label class="option-label" for="st_cartoon">
+                            <i class="fa-solid fa-masks-theater option-icon"></i> Cartoon
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Q11 -->
+            <div class="question-group">
+                <label class="question-label">
+                    <span class="question-num">11</span>
+                    Preferez-vous ?
+                </label>
+                <div class="options-grid">
+                    <div class="option-item">
+                        <input type="radio" name="theme" id="t_clair" value="Mode clair">
+                        <label class="option-label" for="t_clair">
+                            <i class="fa-solid fa-sun option-icon"></i> Mode clair
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" name="theme" id="t_sombre" value="Mode sombre">
+                        <label class="option-label" for="t_sombre">
+                            <i class="fa-solid fa-moon option-icon"></i> Mode sombre
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" name="theme" id="t_les2" value="Les deux selon heure">
+                        <label class="option-label" for="t_les2">
+                            <i class="fa-solid fa-circle-half-stroke option-icon"></i> Les deux (selon l'heure)
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Q12 -->
+            <div class="question-group">
+                <label class="question-label">
+                    <span class="question-num">12</span>
+                    Les animations vous motivent-elles ou vous distraient-elles ?
+                </label>
+                <div class="options-grid">
+                    <div class="option-item">
+                        <input type="radio" name="animations" id="an_motiv" value="Motivantes">
+                        <label class="option-label" for="an_motiv">
+                            <i class="fa-solid fa-rocket option-icon"></i> Elles me motivent !
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" name="animations" id="an_neutre" value="Neutres">
+                        <label class="option-label" for="an_neutre">
+                            <i class="fa-solid fa-face-meh option-icon"></i> Neutres, ca ne change rien
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" name="animations" id="an_distrait" value="Distrayantes">
+                        <label class="option-label" for="an_distrait">
+                            <i class="fa-solid fa-face-dizzy option-icon"></i> Elles me distraient
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons-triple">
+                <a href="page4.html" class="btn btn-secondary">
+                    <i class="fa-solid fa-arrow-left"></i> Retour
+                </a>
+                <button class="btn-validate" id="validateBtn" onclick="validateForm(event)">
+                    <i class="fa-solid fa-check"></i> Valider
+                </button>
+                <a href="page6.html" class="btn btn-primary" onclick="saveAndNext(event,'page6.html')">
+                    Suivant <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="page-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <script src="shared.js"></script>
+</body>
+
+</html>
