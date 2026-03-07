@@ -166,21 +166,24 @@
 
             var data = collecterReponses();
 
-            fetch(SHEET_URL, { method: 'POST', body: JSON.stringify(data) })
-                .then(function () {
-                    btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Reponses envoyees !';
-                    let coins = parseInt(localStorage.getItem('gp_coins') || '0') + 400;
-                    localStorage.setItem('gp_coins', coins);
-                    document.getElementById('coins').textContent = coins;
-                    launchConfetti();
-                    setTimeout(function () {
-                        document.getElementById('thankyou-overlay').classList.add('show');
-                    }, 700);
-                })
-                .catch(function () {
-                    btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Reessayer';
-                    btn.disabled = false;
-                });
+            // no-cors — envoi sans attendre la reponse
+            fetch(SHEET_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: JSON.stringify(data)
+            });
+
+            // Affiche succes directement
+            setTimeout(function () {
+                btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Reponses envoyees !';
+                let coins = parseInt(localStorage.getItem('gp_coins') || '0') + 400;
+                localStorage.setItem('gp_coins', coins);
+                document.getElementById('coins').textContent = coins;
+                launchConfetti();
+                setTimeout(function () {
+                    document.getElementById('thankyou-overlay').classList.add('show');
+                }, 700);
+            }, 800);
         }
     </script>
 </body>
