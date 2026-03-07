@@ -211,6 +211,14 @@
         </div>
     </div>
 
+
+    <script>
+        // Efface les reponses precedentes SEULEMENT sur page1
+        // pour qu'un nouvel utilisateur parte de zero
+        localStorage.removeItem('gp_responses');
+        localStorage.removeItem('gp_coins');
+    </script>
+
     <script src="shared.js"></script>
     <script>
         // Gestion radio "niveau" pour cacher "autre" si on change
