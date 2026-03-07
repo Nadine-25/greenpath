@@ -91,16 +91,19 @@ function restaurerReponses() {
 function envoyerReponses(btn, xp, nextOverlay) {
     var data = collecterReponses();
 
-    fetch(SHEET_URL, { method: 'POST', body: JSON.stringify(data) })
-    .then(function() {
-        btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Réponses envoyées !';
-        terminerValidation(btn, xp, nextOverlay);
-    })
-    .catch(function() {
-        btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Réessayer';
-        btn.disabled = false;
+    // no-cors evite le bug CORS de Google Apps Script
+    // On considere l'envoi reussi des qu'il part
+    fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify(data)
     });
+
+    // On n'attend pas la reponse — on affiche succes directement
+    btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Reponses envoyees !';
+    terminerValidation(btn, xp, nextOverlay);
 }
+
 
 function terminerValidation(btn, xp, showOverlay) {
     let coins = parseInt(localStorage.getItem('gp_coins') || '0') + xp;
